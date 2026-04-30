@@ -11,8 +11,8 @@
     <style>
         :root {
             --brand-bg: #FFFFFF;
-            --brand-sub-bg: #F5F9FF;
-            --brand-ink: #011627;
+            --brand-sub-bg: #F8FAFF;
+            --brand-ink: #000000;
             --brand-accent: #0066FF;
             --brand-secondary: #4D94FF;
             --font-main: 'SUIT', sans-serif;
@@ -24,42 +24,63 @@
             font-family: var(--font-main);
             -webkit-font-smoothing: antialiased;
             letter-spacing: -0.03em;
+            line-height: 1.6;
         }
 
-        /* Maximum boldness for impact sections */
-        .font-black { font-weight: 900 !important; }
-        .font-extrabold { font-weight: 800 !important; }
-
-        h1, h2, h3, h4, h5, h6, .font-serif {
+        h1, h2, h3, h4, h5, h6 {
             font-family: var(--font-main) !important;
-            font-weight: 900;
             letter-spacing: -0.05em;
             color: var(--brand-ink);
+            line-height: 1.1;
         }
 
-        /* Custom Animations */
+        /* Hero Text Impact */
+        .hero-title {
+            font-size: clamp(4rem, 10vw, 8.5rem);
+            line-height: 0.85;
+            font-weight: 800;
+            letter-spacing: -0.06em;
+        }
+
+        /* Vision Section Title */
+        .vision-title {
+            font-size: 60px;
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.05em;
+        }
+
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
         .animate-fade-in-up { animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 
-        .glass-chip {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(0, 102, 255, 0.1);
-        }
-
         .transition-all { transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Sidebar Links - 17px */
+        .sidebar-link {
+            font-size: 17px;
+            font-weight: 700;
+            color: #000000;
+            transition: all 0.3s ease;
+        }
+        .sidebar-link:hover { color: var(--brand-accent); }
+
+        .glass-chip {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 102, 255, 0.1);
+        }
     </style>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: { sans: ['SUIT', 'sans-serif'], serif: ['SUIT', 'sans-serif'] },
-                    colors: { brand: { bg: '#FFFFFF', sub: '#F5F9FF', ink: '#011627', accent: '#0066FF', secondary: '#4D94FF' } }
+                    fontFamily: { sans: ['SUIT', 'sans-serif'] },
+                    colors: { brand: { bg: '#FFFFFF', sub: '#F8FAFF', ink: '#000000', accent: '#0066FF', secondary: '#4D94FF' } }
                 }
             }
         }
@@ -69,130 +90,87 @@
     
     <div class="flex flex-col lg:flex-row min-h-screen">
       
-      <!-- Desktop Sidebar Navigation -->
-      <nav class="hidden lg:flex flex-col justify-between fixed top-0 left-0 w-[320px] h-screen bg-brand-sub border-r border-blue-50 p-10 z-50">
+      <!-- Desktop Sidebar -->
+      <nav class="hidden lg:flex flex-col justify-between fixed top-0 left-0 w-[320px] h-screen bg-brand-sub border-r border-black/[0.02] p-10 z-50">
         <div>
-          <h1 class="text-2xl font-black mb-16 tracking-tighter leading-tight text-brand-accent">
-            ㈜바론컨설턴트<br/>디자인팀
-          </h1>
+          <div class="mb-24">
+            <h1 class="text-[28px] font-bold leading-tight text-brand-accent tracking-tighter">
+              ㈜바론컨설턴트<br/>디자인팀
+            </h1>
+          </div>
           
-          <div class="space-y-10">
+          <div class="space-y-16">
             <section>
-              <h2 class="text-[10px] uppercase tracking-[0.2em] opacity-40 font-black mb-4 italic">Navigation</h2>
-              <ul class="space-y-3">
-                <li>
-                  <a href="#about" onclick="setActiveCat('all')" class="text-[14px] font-black hover:pl-2 hover:text-brand-accent transition-all flex items-center gap-2 group text-brand-ink/60">
-                    <span class="w-2 h-2 rounded-full bg-brand-accent opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                    About Us
-                  </a>
-                </li>
+              <h2 class="text-[10px] uppercase tracking-[0.2em] opacity-30 font-bold mb-6 italic">Navigation</h2>
+              <ul class="space-y-5">
+                <li><a href="#about" class="sidebar-link">About Us</a></li>
               </ul>
             </section>
 
             <section>
-              <h2 class="text-[10px] uppercase tracking-[0.2em] opacity-40 font-black mb-4 italic">Portfolio Archive</h2>
-              <ul class="space-y-3" id="sidebar-category-list">
-                <!-- Categories will be injected here -->
-              </ul>
+              <h2 class="text-[10px] uppercase tracking-[0.2em] opacity-30 font-bold mb-6 italic">Portfolio Archive</h2>
+              <ul class="space-y-5" id="sidebar-category-list"></ul>
             </section>
           </div>
         </div>
 
-        <div class="text-[11px] opacity-40 leading-relaxed font-black">
-          <p class="mb-1 uppercase tracking-widest">Connect</p>
-          <p>© 2024 ㈜바론컨설턴트 디자인팀.</p>
+        <div class="text-[11px] opacity-20 font-bold uppercase tracking-widest italic">
+          © 2024 ㈜바론컨설턴트 디자인팀.
         </div>
       </nav>
-
-      <!-- Mobile Header -->
-      <nav class="lg:hidden fixed top-0 left-0 w-full z-[60] bg-white/80 backdrop-blur-md border-b border-black/5 flex items-center justify-between px-6 h-16">
-        <span class="font-black text-xl text-brand-accent">㈜바론컨설턴트</span>
-        <button id="mobile-toggle" class="p-2">
-            <svg id="menu-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-        </button>
-      </nav>
-
-      <!-- Mobile Menu Overlay -->
-      <div id="mobile-menu" class="lg:hidden fixed inset-0 z-50 bg-brand-sub pt-24 translate-x-full transition-transform duration-500 ease-in-out">
-        <div class="p-10 space-y-12">
-            <a href="#about" class="text-4xl font-black block mobile-link">About Us</a>
-            <div class="space-y-4">
-                <h3 class="text-[10px] uppercase tracking-widest opacity-40 font-black">Categories</h3>
-                <div class="grid gap-6 text-2xl font-black" id="mobile-category-list"></div>
-            </div>
-        </div>
-      </div>
 
       <!-- Main Content Area -->
-      <main class="flex-1 lg:pl-[320px] pt-16 lg:pt-0">
+      <main class="flex-1 lg:pl-[320px]">
         
-        <!-- Hero Section (Extreme Impact) -->
-        <section id="about" class="relative min-h-[85vh] flex flex-col justify-center px-10 lg:px-20 overflow-hidden border-b border-black/5">
+        <!-- Hero Section -->
+        <section id="about" class="relative min-h-[85vh] flex flex-col justify-center px-10 lg:px-20 overflow-hidden border-b border-black/[0.03]">
           <div class="max-w-screen-xl relative z-10">
-            <div class="flex items-center gap-6 mb-10">
-              <span class="w-16 h-[2px] bg-brand-accent"></span>
-              <span class="text-[12px] uppercase tracking-[0.4em] font-black text-brand-accent">
-                BARON CONSULTANT DESIGN TEAM
-              </span>
+            <div class="flex items-center gap-4 mb-12">
+              <span class="w-10 h-[2px] bg-brand-accent"></span>
+              <span class="text-[11px] uppercase tracking-[0.4em] font-black text-brand-accent">BARON CONSULTANTS DESIGN TEAM</span>
             </div>
-            
-            <h1 class="text-[12vw] lg:text-[10vw] font-black leading-[0.8] tracking-tighter mb-16">
-                Form <br />
-                <span class="italic bg-clip-text text-transparent bg-gradient-to-r from-brand-accent to-brand-secondary">Following</span> <br /> 
-                Essence
-            </h1>
-            
-            <div class="flex flex-col md:flex-row md:items-end justify-between gap-16 border-t-2 border-black/5 pt-16">
-              <p class="max-w-xl text-lg lg:text-xl leading-relaxed opacity-50 font-black">
-                우리는 단순한 디자인을 넘어 브랜드의 본질을 시각화합니다.<br/>
-                ㈜바론컨설턴트 디자인팀은 격이 다른 솔루션을 제공합니다.
-              </p>
-              <div class="flex flex-col gap-4 text-right">
-                <span class="text-[11px] uppercase tracking-[0.2em] font-black opacity-40 italic">SCROLL FOR ARCHIVE</span>
-                <div class="h-24 w-[3px] bg-brand-accent ml-auto"></div>
-              </div>
+            <h1 class="hero-title mb-20">Form <br /><span class="italic bg-clip-text text-transparent bg-gradient-to-r from-brand-accent to-brand-secondary">Following</span> <br /> Essence</h1>
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-12 pt-16 border-t border-black/[0.05]">
+              <p class="max-w-md text-[14px] leading-relaxed opacity-40 font-bold">우리는 단순한 디자인을 넘어 브랜드의 본질을 시각화합니다. CI/BI부터<br/>토탈 디자인까지, ㈜바론컨설턴트 디자인팀은 격이 다른 솔루션을 제공합니다.</p>
+              <div class="relative pb-24"><span class="text-[10px] uppercase tracking-[0.2em] font-black opacity-30 italic absolute right-0 bottom-full mb-4 whitespace-nowrap">SCROLL FOR ARCHIVE</span><div class="absolute right-0 top-0 h-24 w-[2px] bg-brand-accent/20"></div></div>
             </div>
-          </div>
-          <div class="absolute top-1/2 right-10 -translate-y-1/2 opacity-[0.04] select-none pointer-events-none">
-            <span class="text-[22vw] font-black italic text-brand-accent uppercase tracking-tighter">BARON</span>
           </div>
         </section>
 
-        <!-- Project Archive Section -->
+        <!-- Vision Section -->
+        <section class="py-40 px-10 lg:px-24 border-b border-black/[0.03]">
+            <div class="max-w-screen-xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-24 items-start">
+                    <div class="lg:col-span-5">
+                        <span class="text-[10px] uppercase tracking-[0.3em] opacity-30 font-black mb-10 block italic">Our Vision</span>
+                        <h2 class="vision-title mb-14">우리의 가치를 <br /><span class="italic text-brand-accent text-[64px] font-bold">형태</span>로 만듭니다.</h2>
+                        <p class="text-[14px] opacity-40 leading-[1.8] max-w-[340px] font-bold">㈜바론컨설턴트 디자인팀은 통합 디자인 스튜디오로서 기업의 브랜드 Identity(CI/BI)부터 다양한 인쇄 매체, 조감도, 인포그래픽 그리고 대규모 컨퍼런스의 토탈 디자인까지 광범위한 스펙트럼의 전문성을 보유하고 있습니다.</p>
+                    </div>
+                    <div class="lg:col-span-7 pt-12">
+                        <div class="space-y-0">
+                            <div class="flex items-start gap-12 border-b border-black/[0.05] pb-12 mb-12 group"><span class="text-[12px] font-black opacity-20 mt-2 italic tracking-widest">01</span><div><h3 class="text-[28px] font-extrabold mb-4 tracking-tighter">Strategy</h3><p class="text-[15px] opacity-40 leading-relaxed max-w-md font-bold">분석과 통찰을 바탕으로 브랜드의 핵심 가치를 정의하고 전략적인 시각화를 제안합니다.</p></div></div>
+                            <div class="flex items-start gap-12 border-b border-black/[0.05] pb-12 mb-12 group"><span class="text-[12px] font-black opacity-20 mt-2 italic tracking-widest">02</span><div><h3 class="text-[28px] font-extrabold mb-4 tracking-tighter">Design</h3><p class="text-[15px] opacity-40 leading-relaxed max-w-md font-bold">단순한 아름다움을 넘어, 기능적이고 지속 가능한 디자인 솔루션을 창조합니다.</p></div></div>
+                            <div class="flex items-start gap-12 pb-10 group"><span class="text-[12px] font-black opacity-20 mt-2 italic tracking-widest">03</span><div><h3 class="text-[28px] font-extrabold mb-4 tracking-tighter">Impact</h3><p class="text-[15px] opacity-40 leading-relaxed max-w-md font-bold">우리의 디자인이 비즈니스의 실질적인 효과와 강력한 브랜드 파워를 가져다줍니다.</p></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Archive Section -->
         <section id="works" class="py-24 px-10 lg:px-20 bg-white">
           <div class="max-w-screen-xl mx-auto">
-            <div class="mb-24">
-              <span class="text-[11px] uppercase tracking-[0.4em] opacity-40 font-black mb-6 block italic">Selected Portfolios</span>
-              <h2 class="text-7xl lg:text-9xl font-black mb-20 tracking-tighter">Works</h2>
-              
-              <!-- Maximum Impact Filter Bar -->
-              <div class="flex flex-wrap items-center gap-y-10 border-b-2 border-black/5 pb-12 mb-12" id="filter-container">
-                <!-- Main filters injected here -->
-              </div>
+            <h2 class="text-7xl lg:text-9xl font-black mb-20 tracking-tighter">Works</h2>
+            
+            <!-- Category Filter Bar (Reduced to Sidebar size ~18px) -->
+            <div class="flex flex-wrap items-center gap-y-8 border-b border-black/5 pb-10 mb-12" id="filter-container"></div>
+            
+            <!-- Sub Category Chips -->
+            <div id="sub-filter-area" class="flex flex-wrap gap-4 min-h-[50px] mb-16 transition-all"></div>
 
-              <!-- Bold Sub Filter Chips -->
-              <div id="sub-filter-area" class="flex flex-wrap gap-4 min-h-[60px] transition-all">
-                <!-- Sub chips injected here -->
-              </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-32" id="project-grid">
-              <!-- Projects injected here -->
-            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-32" id="project-grid"></div>
           </div>
         </section>
-
-        <footer class="bg-brand-ink text-white py-32 px-10 lg:px-20">
-          <div class="max-w-screen-xl mx-auto flex flex-col md:flex-row justify-between items-start gap-20">
-            <div>
-              <h3 class="text-3xl font-black text-brand-accent mb-8">㈜바론컨설턴트 디자인팀</h3>
-              <p class="opacity-40 max-w-sm text-sm leading-relaxed font-black">
-                최고의 전문성으로 당신의 비즈니스를 시각화합니다.<br/>
-                © 2024 ㈜바론컨설턴트 디자인팀. ALL RIGHTS RESERVED.
-              </p>
-            </div>
-          </div>
-        </footer>
       </main>
     </div>
 
@@ -201,11 +179,8 @@
         <div class="w-full min-h-screen p-8 lg:p-20">
             <div class="flex justify-between items-center mb-20 max-w-screen-xl mx-auto">
                 <span class="text-2xl font-black text-brand-accent">㈜바론컨설턴트 디자인팀</span>
-                <button id="modal-close" class="flex items-center gap-6 group">
-                    <span class="text-[12px] font-black uppercase tracking-widest group-hover:mr-4 transition-all">Close Project</span>
-                    <div class="w-14 h-14 border-2 border-black/10 rounded-full flex items-center justify-center group-hover:bg-brand-accent group-hover:text-white transition-all">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                    </div>
+                <button onclick="closeModal()" class="w-14 h-14 border-2 border-black/10 rounded-full flex items-center justify-center hover:bg-brand-accent hover:text-white transition-all">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
                 </button>
             </div>
             <div id="modal-content" class="max-w-screen-xl mx-auto"></div>
@@ -219,16 +194,13 @@
           { id: 'editorial', label: '편집', subs: ['도서/책자', '보고서/제안서', '발표 및 강연자료'] },
           { id: 'infographic', label: '인포그래픽' },
           { id: 'birdseye', label: '조감도' },
-          { id: 'total', label: '토탈디자인', subs: ['행사/컨퍼런스', '과업수행'] }
+          { id: 'total', label: '토탈디자인', subs: ['행사, 컨퍼런스 토탈디자인', '과업수행 토탈디자인'] }
         ];
 
         const PROJECTS = [
-          { id: "1", title: "Hanmac Brand Identity", category: "cibi", subCategory: "", description: "한맥 건축의 프리미엄 브랜드 아이덴티티 디자인입니다.", imageUrl: "https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&q=80&w=800", detailImages: ["https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&q=80&w=1200"], year: "2023", client: "한맥건축" },
-          { id: "2", title: "Global Tech Summit", category: "total", subCategory: "행사/컨퍼런스", description: "글로벌 테크 서밋의 토탈 브랜딩을 제공했습니다.", imageUrl: "https://images.unsplash.com/photo-1540575861501-7ad0582371f3?auto=format&fit=crop&q=80&w=800", detailImages: ["https://images.unsplash.com/photo-1540575861501-7ad0582371f3?auto=format&fit=crop&q=80&w=1200"], year: "2024", client: "Tech Committee" },
-          { id: "3", title: "Urban Dev Report", category: "editorial", subCategory: "보고서/제안서", description: "복잡한 도시 데이터를 직관적으로 디자인했습니다.", imageUrl: "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?auto=format&fit=crop&q=80&w=800", detailImages: ["https://images.unsplash.com/photo-1544383835-bda2bc66a55d?auto=format&fit=crop&q=80&w=1200"], year: "2023", client: "도시연구소" },
-          { id: "4", title: "Premium Booklet", category: "promo", subCategory: "브로슈어", description: "럭셔리 브랜드를 위한 브로슈어 디자인.", imageUrl: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=800", detailImages: ["https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=1200"], year: "2023", client: "Modern Roast" },
-          { id: "5", title: "Smart Logistics", category: "infographic", subCategory: "", description: "물류 데이터 시각화 프로젝트.", imageUrl: "https://images.unsplash.com/photo-1551288049-bbbda5366391?auto=format&fit=crop&q=80&w=800", detailImages: ["https://images.unsplash.com/photo-1551288049-bbbda5366391?auto=format&fit=crop&q=80&w=1200"], year: "2022", client: "Logistics Corp" },
-          { id: "6", title: "Residential Sky", category: "birdseye", subCategory: "", description: "건축 조감도 렌더링 프로젝트.", imageUrl: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800", detailImages: ["https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1200"], year: "2024", client: "Skyline Dev" }
+          { id: "1", title: "Hanmac CI System", category: "cibi", subCategory: "", imageUrl: "https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&q=80&w=800" },
+          { id: "2", title: "Creative Brochure", category: "promo", subCategory: "브로슈어", imageUrl: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=800" },
+          { id: "3", title: "Annual Report 2024", category: "editorial", subCategory: "보고서/제안서", imageUrl: "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?auto=format&fit=crop&q=80&w=800" }
         ];
 
         let activeCat = 'all';
@@ -238,33 +210,21 @@
             renderSidebar();
             renderFilters();
             renderProjects();
-            setupEvents();
         }
 
         function renderSidebar() {
-            const list = document.getElementById('sidebar-category-list');
-            const mList = document.getElementById('mobile-category-list');
-            const html = CATEGORIES.map(c => `
-                <li>
-                    <a href="#works" onclick="setActiveCat('${c.id}')" class="text-[15px] font-black hover:pl-2 hover:text-brand-accent transition-all flex items-center gap-3 group text-brand-ink/70">
-                        <span class="w-2 h-2 rounded-full bg-brand-accent opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                        ${c.label}
-                    </a>
-                </li>
-            `).join('');
-            list.innerHTML = html;
-            if(mList) mList.innerHTML = html;
+            document.getElementById('sidebar-category-list').innerHTML = CATEGORIES.map(c => `<li><a href="#works" onclick="setActiveCat('${c.id}')" class="sidebar-link">${c.label}</a></li>`).join('');
         }
 
         function renderFilters() {
             const container = document.getElementById('filter-container');
-            const mainHtml = [`<button onclick="setActiveCat('all')" class="text-[28px] lg:text-[32px] font-black uppercase tracking-tighter transition-all ${activeCat === 'all' ? 'text-brand-accent scale-105' : 'text-black/20 hover:text-brand-accent'}">All Archive</button>`];
-            
+            // Reduced to 19px to match sidebar (17px) aesthetics
+            const html = [`<button onclick="setActiveCat('all')" class="text-[19px] font-black uppercase tracking-tight transition-all ${activeCat === 'all' ? 'text-brand-accent' : 'text-black/30 hover:text-brand-accent'}">All Archive</button>`];
             CATEGORIES.forEach(c => {
-                mainHtml.push(`<span class="text-black/5 text-4xl font-light mx-6">|</span>`);
-                mainHtml.push(`<button onclick="setActiveCat('${c.id}')" class="text-[28px] lg:text-[32px] font-black uppercase tracking-tighter transition-all ${activeCat === c.id ? 'text-brand-accent scale-105' : 'text-black/20 hover:text-brand-accent'}">${c.label}</button>`);
+                html.push(`<span class="text-black/5 text-2xl font-light mx-5">|</span>`);
+                html.push(`<button onclick="setActiveCat('${c.id}')" class="text-[19px] font-black uppercase tracking-tight transition-all ${activeCat === c.id ? 'text-brand-accent' : 'text-black/30 hover:text-brand-accent'}">${c.label}</button>`);
             });
-            container.innerHTML = mainHtml.join('');
+            container.innerHTML = html.join('');
             renderSubArea();
         }
 
@@ -279,7 +239,7 @@
             area.classList.remove('opacity-0', 'pointer-events-none');
             area.innerHTML = cat.subs.map(s => {
                 const active = activeSubs.includes(s);
-                return `<button onclick="toggleSub('${s}')" class="px-8 py-3 rounded-full font-black text-base glass-chip border-2 transition-all ${active ? 'bg-brand-accent text-white border-brand-accent' : 'text-black/40 border-black/5 hover:border-brand-accent hover:text-brand-accent'}">${s}</button>`;
+                return `<button onclick="toggleSub('${s}')" class="px-7 py-3 rounded-full font-bold text-sm glass-chip transition-all ${active ? 'bg-brand-accent text-white border-brand-accent' : 'text-black/50 border-black/5 hover:border-brand-accent hover:text-brand-accent'}">${s}</button>`;
             }).join('');
         }
 
@@ -288,12 +248,7 @@
             activeSubs = [];
             renderFilters();
             renderProjects();
-            if(id !== 'all') {
-                const works = document.getElementById('works');
-                if(works) works.scrollIntoView({behavior:'smooth'});
-            }
-            const menu = document.getElementById('mobile-menu');
-            if(menu) menu.classList.add('translate-x-full');
+            if(id !== 'all') document.getElementById('works').scrollIntoView({behavior:'smooth'});
         };
 
         window.toggleSub = (s) => {
@@ -304,72 +259,31 @@
         };
 
         function renderProjects() {
-            const grid = document.getElementById('project-grid');
             let filtered = activeCat === 'all' ? PROJECTS : PROJECTS.filter(p => p.category === activeCat);
             if (activeSubs.length > 0) filtered = filtered.filter(p => activeSubs.includes(p.subCategory));
-
-            grid.innerHTML = filtered.map(p => `
+            document.getElementById('project-grid').innerHTML = filtered.map(p => `
                 <div onclick="openModal('${p.id}')" class="group cursor-pointer animate-fade-in-up">
-                    <div class="aspect-[16/10] overflow-hidden bg-brand-sub mb-10 rounded-[2px] relative shadow-sm">
-                        <img src="${p.imageUrl}" class="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110" />
-                        <div class="absolute inset-0 bg-brand-accent/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                    </div>
-                    <div class="flex justify-between items-start">
-                        <div>
-                            <h3 class="text-4xl font-black mb-4 group-hover:text-brand-accent transition-all tracking-tighter">${p.title}</h3>
-                            <p class="text-[14px] font-black opacity-30 uppercase tracking-[0.3em]">${p.category}</p>
-                        </div>
-                        <div class="w-14 h-14 border-2 border-black/5 rounded-full flex items-center justify-center group-hover:bg-brand-accent group-hover:text-white group-hover:border-brand-accent transition-all">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                        </div>
-                    </div>
+                    <div class="aspect-[16/10] overflow-hidden bg-brand-sub mb-8 rounded-[2px] relative shadow-sm"><img src="${p.imageUrl}" class="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105" /></div>
+                    <h3 class="text-3xl font-black mb-3 tracking-tighter">${p.title}</h3>
                 </div>
             `).join('');
         }
 
         window.openModal = (id) => {
             const p = PROJECTS.find(x => x.id === id);
-            const modal = document.getElementById('project-modal');
-            document.getElementById('modal-content').innerHTML = `
-                <div class="grid lg:grid-cols-12 gap-20">
-                    <div class="lg:col-span-5">
-                        <div class="sticky top-24">
-                            <span class="text-[12px] font-black text-brand-accent uppercase tracking-[0.4em] mb-6 block italic">${p.category}</span>
-                            <h2 class="text-6xl lg:text-8xl font-black mb-12 leading-[0.9] tracking-tighter">${p.title}</h2>
-                            <p class="text-2xl font-black opacity-50 leading-relaxed mb-16 italic">"${p.description}"</p>
-                            <div class="flex gap-20 text-[11px] uppercase font-black opacity-40 tracking-widest">
-                                <div><p class="mb-3 opacity-60">Year</p><p class="text-black">${p.year}</p></div>
-                                <div><p class="mb-3 opacity-60">Client</p><p class="text-black">${p.client}</p></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="lg:col-span-7 space-y-16">
-                        ${p.detailImages.map(img => `<img src="${img}" class="w-full rounded-sm shadow-lg" />`).join('')}
-                    </div>
-                </div>
-            `;
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-            setTimeout(() => modal.classList.remove('opacity-0'), 10);
+            document.getElementById('modal-content').innerHTML = `<h2 class="text-7xl font-black mb-12 tracking-tighter">${p.title}</h2><img src="${p.imageUrl}" class="w-full" />`;
+            const m = document.getElementById('project-modal');
+            m.classList.remove('hidden'); m.classList.add('flex');
+            setTimeout(() => m.classList.remove('opacity-0'), 10);
             document.body.style.overflow = 'hidden';
         };
 
         window.closeModal = () => {
-            const modal = document.getElementById('project-modal');
-            modal.classList.add('opacity-0');
-            setTimeout(() => { modal.classList.add('hidden'); modal.classList.remove('flex'); }, 500);
+            const m = document.getElementById('project-modal');
+            m.classList.add('opacity-0');
+            setTimeout(() => { m.classList.add('hidden'); m.classList.remove('flex'); }, 500);
             document.body.style.overflow = '';
         };
-
-        function setupEvents() {
-            const toggle = document.getElementById('mobile-toggle');
-            if(toggle) toggle.onclick = () => {
-                document.getElementById('mobile-menu').classList.toggle('translate-x-full');
-            };
-            document.getElementById('modal-close').onclick = closeModal;
-            window.onclick = (e) => { if(e.target.id === 'project-modal') closeModal(); };
-            window.onkeydown = (e) => { if(e.key === 'Escape') closeModal(); };
-        }
 
         document.addEventListener('DOMContentLoaded', init);
     </script>
