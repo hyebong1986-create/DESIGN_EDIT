@@ -6,28 +6,29 @@
     <title>Studio Zenith Archive</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- SUIT Web Font -->
+    <link href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/static/woff2/SUIT.css" rel="stylesheet">
     <style>
         :root {
             --brand-bg: #F8F7F2;
             --brand-ink: #1A1A1A;
             --brand-accent: #7A6F5D;
+            --font-main: 'SUIT', sans-serif;
         }
 
         body {
             background-color: var(--brand-bg);
             color: var(--brand-ink);
-            font-family: 'Inter', sans-serif;
+            font-family: var(--font-main);
             -webkit-font-smoothing: antialiased;
+            letter-spacing: -0.02em;
         }
 
-        .font-serif {
-            font-family: 'Playfair Display', serif;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Playfair Display', serif;
+        /* Override all headings to use SUIT */
+        h1, h2, h3, h4, h5, h6, .font-serif {
+            font-family: var(--font-main) !important;
+            font-weight: 700;
+            letter-spacing: -0.03em;
         }
 
         /* Custom Animations */
@@ -66,8 +67,8 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
+                        sans: ['SUIT', 'sans-serif'],
+                        serif: ['SUIT', 'sans-serif'],
                     },
                     colors: {
                         brand: {
@@ -319,49 +320,77 @@
             id: "1",
             title: "Hanmac Brand Identity",
             category: "ci-bi",
-            description: "Modern reinterpretation of traditional motifs for a premium architectural firm.",
+            description: "전통적인 모티프를 현대적으로 재해석한 한맥 건축의 프리미엄 브랜드 아이덴티티 디자인입니다. 로고 디자인부터 어플리케이션 시스템까지 통합적인 브랜딩을 진행했습니다.",
             imageUrl: "https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&q=80&w=800",
-            year: "2023"
+            detailImages: [
+                "https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&q=80&w=1200",
+                "https://images.unsplash.com/photo-1586717791821-3f44a563eb4c?auto=format&fit=crop&q=80&w=1200",
+                "https://images.unsplash.com/photo-1586717799252-bd134ad00e26?auto=format&fit=crop&q=80&w=1200"
+            ],
+            year: "2023",
+            client: "Hanmac Architecture"
           },
           {
             id: "2",
             title: "Global Tech Summit 2024",
             category: "total",
-            description: "Complete visual experience for the annual global technology conference.",
+            description: "글로벌 테크 서밋의 전체 시각 경험 디자인입니다. 무대 디자인, 사이니지, 디지털 리소스를 포함한 토탈 브랜딩을 제공했습니다.",
             imageUrl: "https://images.unsplash.com/photo-1540575861501-7ad0582371f3?auto=format&fit=crop&q=80&w=800",
-            year: "2024"
+            detailImages: [
+                "https://images.unsplash.com/photo-1540575861501-7ad0582371f3?auto=format&fit=crop&q=80&w=1200",
+                "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&q=80&w=1200"
+            ],
+            year: "2024",
+            client: "Tech Summit Committee"
           },
           {
             id: "3",
             title: "Urban Development Report",
             category: "editorial",
-            description: "Strategic urban planning report with sophisticated layout and data visualization.",
+            description: "세련된 레이아웃과 데이터 시각화를 특징으로 하는 도시 계획 전략 보고서입니다. 복잡한 도시 데이터를 직관적이고 예술적인 인포그래픽으로 풀어냈습니다.",
             imageUrl: "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?auto=format&fit=crop&q=80&w=800",
-            year: "2023"
+            detailImages: [
+                "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?auto=format&fit=crop&q=80&w=1200",
+                "https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&q=80&w=1200"
+            ],
+            year: "2023",
+            client: "Urban Planning Institute"
           },
           {
             id: "4",
             title: "Modern Cafe Menu",
             category: "promotional",
-            description: "Minimalist brand collateral for a boutique coffee roastery.",
+            description: "부티크 커피 로스터리를 위한 미니멀한 브랜드 홍보물 디자인입니다. 질감 있는 종이 선택과 세밀한 타이포그래피를 통해 브랜드의 진정성을 전달했습니다.",
             imageUrl: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=800",
-            year: "2023"
+            detailImages: [
+                "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=1200"
+            ],
+            year: "2023",
+            client: "Modern Roast Cafe"
           },
           {
             id: "5",
             title: "Smart Logistics Infographic",
             category: "infographic",
-            description: "Complex supply chain data simplified into high-impact visual storytelling.",
+            description: "복잡한 공급망 데이터를 고영향 시각 스토리텔링으로 단순화했습니다. 물류의 흐름을 한눈에 파악할 수 있는 다이나믹한 레이아웃을 적용했습니다.",
             imageUrl: "https://images.unsplash.com/photo-1551288049-bbbda5366391?auto=format&fit=crop&q=80&w=800",
-            year: "2022"
+            detailImages: [
+                "https://images.unsplash.com/photo-1551288049-bbbda5366391?auto=format&fit=crop&q=80&w=1200"
+            ],
+            year: "2022",
+            client: "Logistics Corp"
           },
           {
             id: "6",
             title: "Skyline Residential Complex",
             category: "birdseye",
-            description: "Architectural bird's-eye view rendering for a new luxury residential project.",
+            description: "럭셔리 주거 단지를 위한 건축 조감도 렌더링입니다. 빛의 흐름과 주변 경관의 조화를 극대화하여 실제 완공 시의 모습을 사실적으로 구현했습니다.",
             imageUrl: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800",
-            year: "2024"
+            detailImages: [
+                "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1200"
+            ],
+            year: "2024",
+            client: "Skyline Development"
           }
         ];
 
@@ -435,7 +464,7 @@
                 : PROJECTS.filter(p => p.category === activeCategory);
 
             grid.innerHTML = filtered.map(p => `
-                <div class="group cursor-pointer opacity-0 translate-y-4 transition-all duration-700 ease-out animate-fade-in-up">
+                <div class="project-card group cursor-pointer opacity-0 translate-y-4 transition-all duration-700 ease-out animate-fade-in-up" data-id="${p.id}">
                     <div class="aspect-[16/10] overflow-hidden bg-[#F8F7F2] relative mb-8 rounded-[2px]">
                         <img src="${p.imageUrl}" alt="${p.title}" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 group-hover:rotate-1" />
                         <div class="absolute inset-0 bg-[#7A6F5D]/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
@@ -449,14 +478,92 @@
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:rotate-90 transition-transform duration-500"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
                         </div>
                     </div>
-                    <div class="mt-6 pt-6 border-t border-black/5 opacity-0 group-hover:opacity-100 transition-opacity translate-y-2 group-hover:translate-y-0 transition-all">
-                        <p class="text-sm opacity-60 leading-relaxed max-w-md italic">${p.description}</p>
-                    </div>
                 </div>
             `).join('');
+
+            // Add click listener to cards
+            document.querySelectorAll('.project-card').forEach(card => {
+                card.onclick = () => {
+                    const id = card.dataset.id;
+                    showProjectDetail(id);
+                };
+            });
+        }
+
+        function showProjectDetail(id) {
+            const project = PROJECTS.find(p => p.id === id);
+            if (!project) return;
+
+            const modal = document.getElementById('project-modal');
+            const content = document.getElementById('modal-content');
+            
+            if (!modal || !content) return;
+
+            // Fill modal content
+            content.innerHTML = `
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
+                    <div class="lg:col-span-5">
+                        <div class="sticky top-0">
+                            <div class="mb-12">
+                                <span class="text-[10px] uppercase tracking-[0.3em] font-bold text-brand-accent mb-4 block">${project.category}</span>
+                                <h2 class="text-5xl lg:text-7xl font-serif mb-8 leading-tight">${project.title}</h2>
+                                <div class="flex gap-12 text-[11px] uppercase tracking-widest font-bold opacity-40 mb-12">
+                                    <div>
+                                        <p class="mb-1 text-[9px] opacity-60">Year</p>
+                                        <p>${project.year}</p>
+                                    </div>
+                                    <div>
+                                        <p class="mb-1 text-[9px] opacity-60">Client</p>
+                                        <p>${project.client || 'N/A'}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="space-y-6">
+                                <h4 class="text-[10px] uppercase tracking-widest font-bold opacity-30">Overview</h4>
+                                <p class="text-lg opacity-70 leading-relaxed font-medium italic">"${project.description}"</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-7">
+                        <div class="space-y-12">
+                            ${project.detailImages.map(img => `
+                                <div class="bg-brand-bg rounded-[2px] overflow-hidden">
+                                    <img src="${img}" alt="${project.title}" class="w-full h-auto" />
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Show modal
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modal.querySelector('.modal-container').classList.remove('translate-y-10', 'opacity-0');
+            }, 10);
+            
+            // Prevent body scroll
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('project-modal');
+            if (!modal) return;
+
+            modal.classList.add('opacity-0');
+            modal.querySelector('.modal-container').classList.add('translate-y-10', 'opacity-0');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                document.body.style.overflow = '';
+            }, 500);
         }
 
         function setupEventListeners() {
+            // Mobile Menu Toggle (Previous Logic)
             const toggleBtn = document.getElementById('mobile-menu-toggle');
             const menu = document.getElementById('mobile-menu');
             const menuIcon = document.getElementById('menu-icon');
@@ -479,7 +586,12 @@
                 };
             }
 
-            // Close menu on link click and category update
+            // Close modal on escape key
+            window.onkeydown = (e) => {
+                if (e.key === 'Escape') closeModal();
+            };
+
+            // Global click handler for dynamic elements
             document.addEventListener('click', (e) => {
                 const link = e.target.closest('.mobile-link, .category-link');
                 if (link) {
@@ -500,11 +612,13 @@
                 }
             });
 
-            // Smooth scroll for all anchor links
+            // Smooth scroll
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+                    if (href === '#') return;
                     e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
+                    const target = document.querySelector(href);
                     if (target) {
                         target.scrollIntoView({ behavior: 'smooth' });
                     }
@@ -515,5 +629,37 @@
         // Initialize
         document.addEventListener('DOMContentLoaded', init);
     </script>
+
+    <!-- Modal UI Structure -->
+    <div id="project-modal" class="hidden fixed inset-0 z-[100] bg-brand-bg items-start justify-center transition-opacity duration-500 opacity-0 overflow-y-auto no-scrollbar">
+        <div class="modal-container w-full min-h-screen p-6 lg:p-16 transition-all duration-700 ease-out translate-y-10 opacity-0">
+            <!-- Modal Header -->
+            <div class="flex justify-between items-center mb-16">
+                <span class="font-serif text-2xl font-bold tracking-tight">ZENITH.</span>
+                <button onclick="closeModal()" class="group flex items-center gap-4 text-[11px] uppercase tracking-widest font-bold">
+                    <span class="group-hover:mr-2 transition-all">Close Project</span>
+                    <div class="w-10 h-10 border border-black/10 rounded-full flex items-center justify-center group-hover:bg-brand-ink group-hover:text-white transition-all">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                    </div>
+                </button>
+            </div>
+            
+            <!-- Modal Content (Injected by JS) -->
+            <div id="modal-content" class="max-w-screen-xl mx-auto">
+                <!-- Content will be injected here -->
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="mt-32 pt-16 border-t border-black/5 flex flex-col md:flex-row justify-between items-center gap-12">
+                <div class="text-center md:text-left">
+                    <p class="text-[10px] uppercase tracking-widest opacity-40 font-bold mb-2">Next Journey</p>
+                    <button onclick="closeModal()" class="text-3xl font-serif italic hover:text-brand-accent transition-colors">Back to Archive</button>
+                </div>
+                <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="w-16 h-16 border border-black/10 rounded-full flex items-center justify-center hover:bg-brand-ink hover:text-white transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+                </button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
